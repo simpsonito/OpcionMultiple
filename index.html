@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Opción Múltiple</title>
+
+    <link href="normalize.css" rel="stylesheet" type="text/css">
+    <link href="estilos.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="opcionMultiple.js"></script>
+</head>
+
+<body onLoad="alCargar()">
+    <h1>Opción Múltiple</h1>
+    <p class="inicial">
+    Gabriel, Laura y Daniel son un grupo de socios, quienes están en una situación difícil ya que tienen el capital para adquirir una empresa. Sin embargo se encuentran desorientados en algunas partes del proceso o pasos a seguir. Ayúdalos a tomar la mejor decisión.<br />
+    </p>
+    <div id="setPregunta">
+        <!--
+        <div class="preguntaTexto">Pregunta texto:</div>
+        <div class="opciones">
+            <div class="opcion" id="op1">posibilidad primera</div>
+            <div class="opcion" id="op2">Opción segunda</div>
+            <div class="opcion" id="op3">Tercera opción</div>
+        </div>
+        -->
+    </div>
+    <div id="retroalimentacion"></div>
+    <input id="botonContinuar" type="button" value="Iniciar" onClick="generarPregunta(pActual)">
+    <div id="mensajes"></div>
+</body>
+</html>
