@@ -14,7 +14,7 @@ function Pregunta(objetoConDatos) {
     this.datos = objetoConDatos;
     Pregunta.conjunto.push(this);
 }
-Pregunta.conjunto = [];
+Pregunta.conjunto = [];//Aquí se almacenan las preguntas
     
 new Pregunta({texto:"¿Cuáles son las cuatro preguntas fundamentales en un proceso de Due dilligence?",
     opciones:[
