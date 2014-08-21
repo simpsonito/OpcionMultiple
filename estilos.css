@@ -1,0 +1,34 @@
+@charset "UTF-8";
+body{
+    margin:1em;
+}
+div{
+    margin:3px;
+}
+
+div#setPregunta{
+    /*border: 1px solid #F00;*/
+    background-color:#EFEFFF;
+    padding:5px;
+    margin-bottom:1em;
+}
+div.preguntaTexto{
+    /*border: 1px solid #00F;*/
+    margin:20px;
+    font-size:1.2em;
+}
+div.opciones{
+    /*border: 1px solid #333;*/
+    margin:2px;
+}
+div.opciones a.opcion{
+    /*border: 1px solid #369;*/
+    margin:2px;
+    white-space:inherit;
+}
+div#retroalimentacion{
+    font-size:1.4em;
+    text-align:center;
+    padding:1px;
+    background-color:#FFE;
+}
