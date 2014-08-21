@@ -2,13 +2,13 @@
  * Created by adib on 20/08/14.
 
  ++++Modelo para preguntas++++
- var pregunta1 = {texto:"PREGUNTA",
+ new Pregunta({texto:"PREGUNTA",
  opciones:[
  {opcion:"OPCION1", correcta:false},
  {opcion:"OPCION2", correcta:true},
  {opcion:"OPCION3", correcta:false}
  ]
- };
+ });
  */
 function Pregunta(objetoConDatos) {
     this.datos = objetoConDatos;
