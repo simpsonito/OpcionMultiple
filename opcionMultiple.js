@@ -10,42 +10,47 @@
  ]
  };
  */
-var pregunta1 = {texto:"¿Cuáles son las cuatro preguntas fundamentales en un proceso de Due dilligence?",
+function Pregunta(objetoConDatos) {
+    this.datos = objetoConDatos;
+    Pregunta.conjunto.push(this);
+}
+Pregunta.conjunto = [];
+    
+new Pregunta({texto:"¿Cuáles son las cuatro preguntas fundamentales en un proceso de Due dilligence?",
     opciones:[
         {opcion:"¿Dónde están las sinergias?,¿Dónde hay esqueletos ocultos?, ¿Cuánto dinero se repartirá entre los vendedores? y ¿Para quién será la empresa?", correcta:false},
         {opcion:"Qué estamos comprando realmente? Cuál es el valor aislado de la empresa objetivo? Dónde están las sinergias y dónde hay esqueletos ocultos? y Cuál es nuestro precio de retirada?", correcta:true},
         {opcion:"¿Dónde está ubicada la empresa? ¿Quiénes son los dueños? ¿Cuánto dinero se repartirá entre los vendedores?", correcta:false}
     ]
-};
-var pregunta2 = {texto:"¿Por qué Tarzán no lleva barba?",
+});
+new Pregunta({texto:"¿Por qué Tarzán no lleva barba?",
     opciones:[
         {opcion:"OPCION1", correcta:false},
         {opcion:"OPCION2", correcta:true},
         {opcion:"OPCION3", correcta:false}
     ]
-};
-var pregunta3 = {texto:"PREGUNTA3",
+});
+new Pregunta({texto:"PREGUNTA3",
     opciones:[
         {opcion:"OPCION1", correcta:false},
         {opcion:"OPCION2", correcta:true},
         {opcion:"OPCION3", correcta:false}
     ]
-};
-var pregunta4 = {texto:"PREGUNTA4",
+});
+new Pregunta({texto:"PREGUNTA4",
     opciones:[
         {opcion:"OPCION1", correcta:false},
         {opcion:"OPCION2", correcta:true},
         {opcion:"OPCION3", correcta:false}
     ]
-};
-var pregunta5 = {texto:"PREGUNTA5",
+});
+new Pregunta({texto:"PREGUNTA5",
     opciones:[
         {opcion:"OPCION1", correcta:false},
         {opcion:"OPCION2", correcta:true},
         {opcion:"OPCION3", correcta:false}
     ]
-};
-var conjuntoPreguntas = [pregunta1, pregunta2, pregunta3, pregunta4, pregunta5];
+});
 var buenas = 0;
 var pActual = 0;
 var intento = 0;
@@ -64,7 +69,7 @@ function reiniciar(){
     document.body.innerHTML = bodyOriginal;
 }
 function generarPregunta(numero){
-    var actual = conjuntoPreguntas[numero];
+    var actual = Pregunta.conjunto[numero].datos;
 
     var contenido = "<div class='preguntaTexto'>" + actual.texto + "</div><div class='opciones'>";
 
@@ -101,7 +106,7 @@ function desactivarBotones(){
         }
     }
     intento = 0;
-    if(pActual < conjuntoPreguntas.length){
+    if(pActual < Pregunta.conjunto.length){
         document.getElementById("botonContinuar").style.display = "";
         document.getElementById("botonContinuar").value = "Siguiente";
     } else {//Si ya no hay más preguntas.
@@ -121,12 +126,12 @@ function desactivarBotones(){
             default://Cualquier otro (5 ó menos)
                 mensajeFinal = "Revisa nuevamente los contenidos de la unidad.";
         }
-        retroalimentar(mensajeFinal+"<br/>Obtuviste <b>"+buenas+"</b> de <b>"+conjuntoPreguntas.length+"</b>."+'<br /><input type="button" value="Otra vez" onClick="reiniciar()">');
+        retroalimentar(mensajeFinal+"<br/>Obtuviste <b>"+buenas+"</b> de <b>"+Pregunta.conjunto.length+"</b>."+'<br /><input type="button" value="Otra vez" onClick="reiniciar()">');
     }
 }
 
 function hacerOpcion(boton){
-    boton.onclick = function(e){
+    boton.onclick = function(){
         //mensajear(this.id +" - " + this.id.substr(this.id.length - 1) + " - " + this.getAttribute("data-correcto"));
         if(this.getAttribute("data-correcto") == "true"){
             //mensajear("sí");
