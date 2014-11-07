@@ -1,12 +1,40 @@
 @charset "UTF-8";
 /*estilos*/
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
 body{
-    margin:1em;
+    margin:2em;
+}
+@media screen and (max-width: 480px) {
+    body{
+        margin: 1px;
+    }
 }
 div{
     margin:3px;
 }
-
+h1{
+    font-weight: bold;
+    font-size: 18px;
+    color: #7e08e4;
+    text-align:left;
+    margin: 0 auto;
+}
+h2{
+    font-weight: bold;
+    font-size: 12px;
+    color: #999;
+    text-align:left;
+    margin: 0 auto;
+}
+h3{
+    font-weight: bold;
+    font-size: 12px;
+}
+p{
+    font-size: 12px;
+}
 div#setPregunta{
     /*border: 1px solid #F00;*/
     background-color:#EFEFFF;
@@ -14,9 +42,8 @@ div#setPregunta{
     margin-bottom:1em;
 }
 div.preguntaTexto{
-    /*border: 1px solid #00F;*/
-    margin:20px;
-    font-size:1.2em;
+    margin:10px;
+    font-size:0.9em;
 }
 div.opciones{
     /*border: 1px solid #333;*/
@@ -26,10 +53,11 @@ div.opciones a.opcion{
     /*border: 1px solid #369;*/
     margin:2px;
     white-space:inherit;
+    font-size: 0.9em;
 }
 div#retroalimentacion{
-    font-size:1.4em;
+    font-size:1em;
     text-align:center;
     padding:1px;
-    background-color:#FFE;
+    background-color: #efeeff;
 }

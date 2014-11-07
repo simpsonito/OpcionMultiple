@@ -1,6 +1,6 @@
 /**
- * Created by adib on 20/08/14.
-
+ * Created by Adib Abud Jaso on 20/08/14.
+ * Modified 06/11/14
  ++++Modelo para preguntas++++
  new Pregunta({texto:"PREGUNTA",
  opciones:[
@@ -15,58 +15,49 @@ function Pregunta(objetoConDatos) {
     Pregunta.conjunto.push(this);
 }
 Pregunta.conjunto = [];//Aquí se almacenan las preguntas
-    
-new Pregunta({texto:"¿Cuáles son las cuatro preguntas fundamentales en un proceso de Due dilligence?",
+new Pregunta({texto:"1. ‟Hace años registré mi divorcio, pero dejé el trámite sin terminar porque no me alcanzaba el dinero. ¿Ahora podría volverme a casar?”",
     opciones:[
-        {opcion:"¿Dónde están las sinergias?,¿Dónde hay esqueletos ocultos?, ¿Cuánto dinero se repartirá entre los vendedores? y ¿Para quién será la empresa?", correcta:false},
-        {opcion:"Qué estamos comprando realmente? Cuál es el valor aislado de la empresa objetivo? Dónde están las sinergias y dónde hay esqueletos ocultos? y Cuál es nuestro precio de retirada?", correcta:true},
-        {opcion:"¿Dónde está ubicada la empresa? ¿Quiénes son los dueños? ¿Cuánto dinero se repartirá entre los vendedores?", correcta:false}
+        {opcion:"Sí puede porque se inició el divorcio y con eso es suficiente.", correcta:false},
+        {opcion:"No se puede porque es necesario terminar el trámite.", correcta:true}
     ]
 });
-new Pregunta({texto:"¿Por qué Tarzán no lleva barba?",
+new Pregunta({texto:"2. “Desde hace siete años, no veo a mi esposa. ¿Estamos divorciados?”",
     opciones:[
-        {opcion:"OPCION1", correcta:false},
-        {opcion:"OPCION2", correcta:true},
-        {opcion:"OPCION3", correcta:false}
+        {opcion:"No, aunque no se vean por años, siguen casados.", correcta:true},
+        {opcion:"Sí, al no verla, el divorcio se dio automáticamente.", correcta:false}
     ]
 });
-new Pregunta({texto:"PREGUNTA3",
+new Pregunta({texto:"3. “Vivo con mi pareja desde hace 10 años; no tuvimos otras relaciones en ese tiempo. Ahora nos queremos separar, ¿le puedo pedir una pensión?”",
     opciones:[
-        {opcion:"OPCION1", correcta:false},
-        {opcion:"OPCION2", correcta:true},
-        {opcion:"OPCION3", correcta:false}
+        {opcion:"Sí, al deshacer el concubinato hay obligaciones similares a un divorcio.", correcta:true},
+        {opcion:"No, al deshacer el concubinato no existen obligaciones.", correcta:false}
     ]
 });
-new Pregunta({texto:"PREGUNTA4",
-    opciones:[
-        {opcion:"OPCION1", correcta:false},
-        {opcion:"OPCION2", correcta:true},
-        {opcion:"OPCION3", correcta:false}
-    ]
-});
-new Pregunta({texto:"PREGUNTA5",
-    opciones:[
-        {opcion:"OPCION1", correcta:false},
-        {opcion:"OPCION2", correcta:true},
-        {opcion:"OPCION3", correcta:false}
-    ]
-});
+
 var buenas = 0;
 var pActual = 0;
 var intento = 0;
-var maxIntento = 2;
+var maxIntento = 1;
 var bodyOriginal;
 
+window.addEventListener("load", alCargar);
 function alCargar(){
-    //alert("cargado");
-    //setClicBotones();
     bodyOriginal = document.body.innerHTML;
+    iniciar();
+    window.removeEventListener("load", alCargar);
+}
+function iniciar(){
+    document.getElementById("botonContinuar").onclick = alApretarSiguiente;
+    function alApretarSiguiente(){
+        generarPregunta(pActual);
+    }
 }
 function reiniciar(){
     buenas = 0;
     pActual = 0;
     intento = 0;
     document.body.innerHTML = bodyOriginal;
+    iniciar();
 }
 function generarPregunta(numero){
     var actual = Pregunta.conjunto[numero].datos;
@@ -110,23 +101,8 @@ function desactivarBotones(){
         document.getElementById("botonContinuar").style.display = "";
         document.getElementById("botonContinuar").value = "Siguiente";
     } else {//Si ya no hay más preguntas.
-        var mensajeFinal;
-        switch (buenas) {
-            case 5:
-                mensajeFinal = "Felicidades, has logrado una comprensión integral de los temas.";
-                break;
-            case 4:
-            case 3:
-                mensajeFinal = "Tienes un buen manejo de los temas, pero aún puedes mejorar.";
-                break;
-            case 2:
-            case 1:
-                mensajeFinal = "Manejas algunos aspectos importantes, pero es necesario fortalecer el estudio de los temas.";
-                break;
-            default://Cualquier otro (5 ó menos)
-                mensajeFinal = "Revisa nuevamente los contenidos de la unidad.";
-        }
-        retroalimentar(mensajeFinal+"<br/>Obtuviste <b>"+buenas+"</b> de <b>"+Pregunta.conjunto.length+"</b>."+'<br /><input type="button" value="Otra vez" onClick="reiniciar()">');
+        var mensajeFinal = "";
+        retroalimentar(mensajeFinal+"Obtuviste <b>"+buenas+"</b> de <b>"+Pregunta.conjunto.length+"</b>."+'<br /><input type="button" value="Otra vez" onClick="reiniciar()">');
     }
 }
 
@@ -155,8 +131,6 @@ function deshacerOpcion(boton){
     boton.className = 'opcion pure-button pure-button-disabled';
     //console.log("clase boton: "+boton.class);
 }
-
-
 function shuffle(array) {
     var currentIndex = array.length
         , temporaryValue
@@ -178,8 +152,6 @@ function shuffle(array) {
 function retroalimentar(cadena){
     document.getElementById("retroalimentacion").innerHTML = cadena;
 }
-
-
 function mensajear(cadena){
     /*
      var actualCadena = document.getElementById("mensajes").innerHTML;
