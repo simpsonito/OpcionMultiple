@@ -74,7 +74,7 @@ function generarPregunta(numero){
     var contenido = "<div class='preguntaTexto'>" + actual.texto + "</div><div class='opciones'>";
 
     for(var i=0; i<actual.opciones.length; i++){
-        contenido = contenido.concat("<a class='opcion pure-button' id='op"+i+"' data-correcto='" + actual.opciones[i].correcta + "'><img class='palomita' style='display:none' src='palomita.png' /><img class='tache' style='display:none' src='tache.png' />"+actual.opciones[i].opcion+"</a>");
+        contenido = contenido.concat("<a class='opcion pure-button' id='op"+i+"' data-correcto='" + actual.opciones[i].correcta + "'><img class='palomita' style='display:none' src='css/palomita.png' /><img class='tache' style='display:none' src='css/tache.png' />"+actual.opciones[i].opcion+"</a>");
     }
     contenido = contenido.concat("</div>");
     document.getElementById("setPregunta").innerHTML = contenido;
